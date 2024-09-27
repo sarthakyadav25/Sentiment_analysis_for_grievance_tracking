@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(0, 47, 142);
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+.form-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Text Section */
+.text-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.text-section h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: 10px; /* Adjust left margin for headings */
+}
+
+.input-group {
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.input-group label {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input-group input {
+    padding: 10px;
+    width: 250%; /* Elongated credential input width horizontally */
+    max-width: 700px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px; /* Pill Shape */
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 80%; /* Button size remains the same */
+    margin-top: 20px;
+    display: block; /* Ensures button is block level for centering */
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+    text-align: center; /* Center text for user prompts */
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Image Container */
+.image-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Color for Left and Right Sections */
+#login-section {
+    background-color: #ffffff; /* Light blue background for the left section */
+}
+
+#signup-section {
+    background-color: #ffffff; /* Light blue background for the right section */
+}
+
+.image-container img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Hide/Show Form Sections */
+#signup-section {
+    visibility: hidden;
+    opacity: 1;
+}
+
+#signup-section.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#login-section.active {
+    visibility: visible;
+    opacity: 1;
+}
