@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis - Login/Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="form-container login-section active" id="login-section">
+            <div class="text-section">
+                <h1>Welcome Back!</h1>
+                <form id="loginForm" onsubmit="login(event)">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Log In</button>
+                </form>
+                <p>Not a user? <a href="#" onclick="showSignup()">Sign Up</a></p>
+            </div>
+            <div class="image-container">
+                <img src="senti3.jpg" alt="Sentiment Analysis Illustration">
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="form-container signup-section" id="signup-section">
+            <div class="image-container">
+                <img src="senti3.jpg" alt="Sign Up Illustration">
+            </div>
+            <div class="text-section">
+                <h1>Create an Account</h1>
+                <form id="signupForm" onsubmit="signup(event)">
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="signup-btn">Sign Up</button>
+                </form>
+                <p>Already a user? <a href="#" onclick="showLogin()">Log In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
