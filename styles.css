@@ -1,159 +1,338 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
+/* General Body Styles */
+body, html {
     margin: 0;
     padding: 0;
-    background-color: rgb(0, 47, 142);
-}
-
-.container {
-    display: flex;
-    height: 100vh;
-    position: relative;
-}
-
-.form-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transition: all 0.8s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.form-container.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.dashboard-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-/* Text Section */
-.text-section {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.text-section h1 {
-    font-size: 2.5rem;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Change background color for a softer look */
     color: #333;
-    margin-bottom: 30px;
-    text-align: center;
-    margin-left: 10px; /* Adjust left margin for headings */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.input-group {
-    margin-bottom: 20px;
-    width: 50%;
-}
-
-.input-group label {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.input-group input {
-    padding: 10px;
-    width: 250%; /* Elongated credential input width horizontally */
-    max-width: 700px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    font-size: 1rem;
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #222;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
     box-sizing: border-box;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 50px; /* Pill Shape */
-    font-size: 1.2rem;
-    cursor: pointer;
-    width: 80%; /* Button size remains the same */
-    margin-top: 20px;
-    display: block; /* Ensures button is block level for centering */
+/* Align left section (brand logo + name) */
+.left-section {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
 }
 
-p {
-    font-size: 1rem;
-    color: #666;
-    text-align: center; /* Center text for user prompts */
+.brand-logo {
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
 }
 
-p a {
-    color: #007bff;
+.brand-name {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: Tahoma, sans-serif;
+    color: #ff5733;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Navbar Menu Styles */
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin-right: 30px; /* Adjust space to avoid cutting off the right-side text */
+}
+
+.navbar-menu li {
+    margin-left: 20px;
+}
+
+.navbar-menu li a {
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 500;
 }
 
-p a:hover {
+.navbar-menu li a:hover {
     text-decoration: underline;
 }
 
-/* Image Container */
-.image-container {
-    width: 50%;
+/* Hero Section */
+.hero-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
-    overflow: hidden;
+    height: calc(100vh - 100px); /* Adjusted to move it higher */
+    padding: 100px 50px; 
 }
 
-/* Background Color for Left and Right Sections */
-#login-section {
-    background-color: #ffffff; /* Light blue background for the left section */
+.hero-section .left-content {
+    max-width: 50%;
+    margin-top: -50px; /* Move content up */
 }
 
-#signup-section {
-    background-color: #ffffff; /* Light blue background for the right section */
+.hero-section .left-content h1 {
+    font-size: 56px; 
+    margin: 0; 
+    line-height: 1.2; 
 }
 
-.image-container img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-    animation: floating 3s ease-in-out infinite;
+.hero-section .left-content p {
+    font-size: 20px; 
+    margin-top: 30px; 
 }
 
-/* Floating Animation */
-@keyframes floating {
-    0% {
-        transform: translateY(0);
+.hero-section .animated-image img {
+    width: 600px; 
+    height: 380px; 
+    object-fit: fill; 
+    animation: zoomInOut 4s infinite alternate ease-in-out; 
+}
+
+@keyframes zoomInOut {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Button Style */
+.cta-button {
+    display: inline-block; 
+    padding: 15px 30px; 
+    background-color: #1f72c5; 
+    color: white; 
+    text-decoration: none; 
+    font-size: 18px; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    margin-top: 20px; 
+    transition: background-color .3s ease; 
+}
+
+.cta-button:hover { 
+    background-color: #215db0; 
+}
+
+/* Services Section */
+.service-cards { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 20px; 
+}
+
+.service-card { 
+    flex: 1; 
+    margin: 0 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    padding: 20px; 
+    text-align: center; 
+    opacity: 0; 
+    transition: opacity .5s ease; 
+}
+
+.service-card img { 
+    height: 250px; 
+    width: 260px; 
+    border-radius: 5px; 
+}
+
+.service-card h3 { 
+    margin-top: 10px; 
+}
+
+/* Content Section Styles */
+.content-section { 
+    padding: 80px 50px; /* Add padding for better spacing */ 
+}
+
+/* About Us Section Styling */
+.about-us-section {
+    padding: 50px;
+    background-color: #1f72c5; /* Light background color for contrast */
+    height: 700px; /* Set height to 700px */
+    display: flex;
+    align-items: center; /* Center content vertically */
+}
+
+.about-content {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center items */
+    justify-content: center; /* Center all content horizontally */
+    width: 100%; /* Allow full width for centering */
+}
+
+.about-image {
+    width: 500px;
+    max-width: 100%; /* Make image responsive */
+    height: 300px; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.about-text {
+    flex: 2; /* Text takes double the space of the image */
+    color: #ffffff;
+}
+
+.about-text h2 {
+    margin-bottom: 20px; /* Space below the title */
+    font-size: 24px; /* Adjust the title font size */
+}
+
+.about-text p {
+    margin-bottom: 15px; /* Space between paragraphs */
+    font-size: 16px; /* Adjust paragraph font size */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Increase spacing between Services and About Us */
+.content-section + .about-us-section {
+    margin-top: 60px; /* Increase gap */
+}
+
+/* Contact Section Styles */
+.contact-section {  
+    background-color: #ffffff; /* Similar light background */  
+    padding: 40px 50px; /* Adjust padding */  
+    border: 1px solid #ddd; /* Subtle border */  
+    border-radius: 5px;
+}
+
+.contact-section h2 {  
+    font-size: 36px;  
+    color: #333;  
+    margin-bottom: 20px;  
+}
+
+.contact-section p {  
+    font-size: 16px;  
+    line-height: 1.6;  
+    color: #666;  
+}
+
+/* Auth Section Styles */
+.auth-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 50px;
+    margin-top: 100px; /* Creates gap between navbar and form */
+}
+
+.auth-section h2 {
+    font-size: 36px;
+    color: #333;
+}
+
+.auth-form {
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px; /* Creates vertical space */
+    width: 420px; /* Keep the width consistent for both forms */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group input:hover,
+.form-group input:focus {
+    border-color: #ff5733; /* Highlight border on focus */
+}
+
+/* Button Styling Consistency */
+.auth-form .cta-button {
+    padding: 10px 20px; /* Maintain smaller size */
+    width: auto; /* Keep the button size consistent */
+    border: none; /* Remove black borders */
+    text-align: center;
+    display: block;
+    margin: 0 auto; /* Center-align the button horizontally */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 50px 20px;
     }
-    50% {
-        transform: translateY(-10px);
+    
+    .hero-section .left-content {
+        max-width: 100%;
+        text-align: center;
     }
-    100% {
-        transform: translateY(0);
+    
+    .hero-section .animated-image img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .service-cards {
+        flex-direction: column;
+    }
+    
+    .service-card {
+        margin-bottom: 20px;
+    }
+    
+    /* Responsive styles for About Us Section */
+    
+    .about-us-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-us-section img {
+        width: 80%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .about-us-section p {
+        width: 100%;
     }
 }
 
-/* Hide/Show Form Sections */
-#signup-section {
-    visibility: hidden;
-    opacity: 1;
+/* Add Fade-in Animation for Service Cards */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-#signup-section.active {
-    visibility: visible;
-    opacity: 1;
+/* Applying Fade-in Animation */
+.service-card {
+    animation: fadeIn 1s forwards;
 }
 
-#login-section.active {
-    visibility: visible;
-    opacity: 1;
-}
+/* Show service cards in sequence */
+.service-card:nth-child(1) { animation-delay: .3s; }
+.service-card:nth-child(2) { animation-delay: .6s; }
+.service-card:nth-child(3) { animation-delay: .9s; }
+.service-card:nth-child(4) { animation-delay: 1.2s; }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SentiTracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="left-section">
+            <img src="analysis.png" alt="Logo" class="brand-logo">
+            <span class="brand-name">SentiTracker</span>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="index.html" class="home-link">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
+
+    <!-- Sign Up Section -->
+    <section class="auth-section">
+        <form class="auth-form" id="signup-form">
+            <h2>Create Your Account</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="cta-button">Sign Up</button>
+            <p id="success-message" style="color:green;"></p>
+            <p id="error-message" style="color:red;"></p>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </form>
+    </section>
+
+    <script>
+        // Your Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Handle signup form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting the default way
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Firebase Authentication for Signup
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    document.getElementById('success-message').textContent = "Account created successfully! Kindly login.";
+                    window.location.href = 'login.html'; // Redirect to login page after successful signup
+                })
+                .catch((error) => {
+                    document.getElementById('error-message').textContent = error.message;
+                });
+        });
+
+        // Navigate to Home page on 'Home' link click
+        document.querySelector('.home-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'index.html'; // Navigate to landing page
+        });
+    </script>
+
+</body>
+</html>

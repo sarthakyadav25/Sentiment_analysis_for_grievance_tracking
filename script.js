@@ -1,45 +1,42 @@
-// Function to switch to the signup screen
-function showSignup() {
-    document.getElementById('login-section').classList.remove('active');
-    document.getElementById('signup-section').classList.add('active');
-    
-    // Clear the login form input fields
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-}
+// script.js
 
-// Function to switch back to the login screen
-function showLogin() {
-    document.getElementById('signup-section').classList.remove('active');
-    document.getElementById('login-section').classList.add('active');
-    
-    // Clear the signup form input fields
-    document.getElementById('signup-email').value = '';
-    document.getElementById('signup-password').value = '';
-}
-
-// Function to handle login
-function login(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
+// Example function to handle login
+document.getElementById('login-form')?.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+    const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const demoEmail = 'user@example.com';
-    const demoPassword = 'password123';
-
-    if (email === demoEmail && password === demoPassword) {
-        window.location.href = 'dashboard.html';
-    } else {
-        alert('Incorrect Email or Password');
+    // Basic validation
+    if (!username || !password) {
+        alert("All fields are required.");
+        return;
     }
-}
 
-// Function to handle signup
-function signup(event) {
-    event.preventDefault();
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
+    // Replace the following line with your Firebase or Django authentication logic
+    console.log('Logging in with', username, password);
+    window.location.href = 'dashboard.html'; // Redirect to dashboard
+});
 
-    alert('Account created successfully! Please log in.');
-    showLogin();
-}
+// Example function to handle signup
+document.getElementById('signup-form')?.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+    const email = document.getElementById('email').value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    // Basic validation
+    if (!username || !email || !password || !confirmPassword) {
+        alert("All fields are required.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    // Replace the following line with your Firebase or Django authentication logic
+    console.log('Signing up with', email, username, password);
+    window.location.href = 'dashboard.html'; // Redirect to dashboard
+});

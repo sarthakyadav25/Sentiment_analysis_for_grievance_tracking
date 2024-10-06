@@ -1,14 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentiment Analysis Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
-    <div class="dashboard-container">
-        <iframe src="https://colab.research.google.com/drive/1PHv-IRLPCtv7oTcIGbsgZHqrB5LPvB7S?usp=sharing" class="colab-frame" frameborder="0"></iframe>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="left-section">
+                <img src="analysis.png" alt="Logo" class="brand-logo">
+                <span class="brand-name">SentiTracker</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#" class="logout-link">Log out</a></li>
+            </ul>
+        </div>
     </div>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <h1 class="welcome-text">Welcome to the Analysis Arena!</h1>
+        <div class="rectangle-container">
+            <div class="file-selection">
+                <div class="file-selection-content">
+                    <img src="table.png" alt="Upload Background" class="background-image">
+                    <button class="select-file-btn">Select Data File</button>
+                    <input type="file" id="fileInput" accept=".xls,.xlsx,.csv,.gdoc" style="display:none;" />
+                    <button class="retry-btn hidden">
+                        <img src="retry.png" alt="Retry Icon" class="retry-icon" />
+                    </button>
+                </div>
+            </div>
+
+            <div class="analysis-report hidden">
+                <div class="report-content">
+                    <img src="report2.png" alt="Report Background" class="report-background-image">
+                    <button id="viewReportBtn" class="select-file-btn hidden">View Analysis Report</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const selectFileBtn = document.querySelector('.select-file-btn');
+        const viewReportBtn = document.getElementById('viewReportBtn');
+        const retryBtn = document.querySelector('.retry-btn');
+        const analysisReport = document.querySelector('.analysis-report');
+        const logoutLink = document.querySelector('.logout-link');
+
+        selectFileBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                setTimeout(() => {
+                    analysisReport.classList.remove('hidden');
+                    analysisReport.classList.add('flip-animation');
+                    viewReportBtn.classList.remove('hidden');
+                    retryBtn.classList.remove('hidden');
+                }, 1000); // Delay of 1 second before flipping the rectangle
+
+                // Simulating a Google Colab link for demonstration
+                viewReportBtn.onclick = () => {
+                    window.open('https://colab.research.google.com/drive/1dwE5ACapv-uMUyfnw8Uh2Y4aPyzKkHc6?usp=sharing', '_blank');
+                };
+            }
+        });
+
+        retryBtn.addEventListener('click', () => {
+            fileInput.value = ''; // Clear the file input
+            analysisReport.classList.add('hidden'); // Hide the analysis report
+            retryBtn.classList.add('hidden'); // Hide the retry button
+        });
+
+        // Log out button redirects to the landing page (index.html)
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html'; // Redirect to index.html
+        });
+    </script>
 </body>
+
 </html>

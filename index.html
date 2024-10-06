@@ -3,56 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentiment Analysis - Login/Sign Up</title>
+    <title>Creative Landing Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Login Form -->
-        <div class="form-container login-section active" id="login-section">
-            <div class="text-section">
-                <h1>Welcome Back!</h1>
-                <form id="loginForm" onsubmit="login(event)">
-                    <div class="input-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" required>
-                    </div>
-                    <button type="submit" class="login-btn">Log In</button>
-                </form>
-                <p>Not a user? <a href="#" onclick="showSignup()">Sign Up</a></p>
-            </div>
-            <div class="image-container">
-                <img src="senti3.jpg" alt="Sentiment Analysis Illustration">
-            </div>
-        </div>
 
-        <!-- Sign Up Form -->
-        <div class="form-container signup-section" id="signup-section">
-            <div class="image-container">
-                <img src="senti3.jpg" alt="Sign Up Illustration">
-            </div>
-            <div class="text-section">
-                <h1>Create an Account</h1>
-                <form id="signupForm" onsubmit="signup(event)">
-                    <div class="input-group">
-                        <label for="signup-email">Email</label>
-                        <input type="email" id="signup-email" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="signup-password">Password</label>
-                        <input type="password" id="signup-password" required>
-                    </div>
-                    <button type="submit" class="signup-btn">Sign Up</button>
-                </form>
-                <p>Already a user? <a href="#" onclick="showLogin()">Log In</a></p>
-            </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="left-section">
+            <img src="analysis.png" alt="Logo" class="brand-logo">
+            <span class="brand-name">SentiTracker</span>
         </div>
+        <ul class="navbar-menu">
+            <li><a href="#" class="home-link">Home</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact-us">Contact</a></li>
+        </ul>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="left-content">
+            <h1>Get Insights of Your</h1>
+            <h1>Business Performance</h1>
+            <p>Transform your online presence with our detailed, result-oriented analyses. Let's take your brand to the next level!</p>
+            <a href="#" class="cta-button" id="get-started">Get Started</a>
+        </div>
+        <div class="animated-image">
+            <img src="r1.jpg" alt="Creative Image">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="content-section">
+        <h2>Our Services</h2>
+        <p>We offer a wide range of services to meet your needs:</p>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="web.jpg" alt="Web Design">
+                <h3>Business Review Analysis</h3>
+            </div>
+            <div class="service-card">
+                <img src="feedback4.png" alt="Mobile App">
+                <h3>Personalized Feedback</h3>
+            </div>
+            <div class="service-card">
+                <img src="strategy3.jpg" alt="SEO Optimization">
+                <h3>Improvement Strategies</h3>
+            </div>
+            <div class="service-card">
+                <img src="tracking.jpg" alt="Custom Software Solutions">
+                <h3>Continuous Tracking</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us-section">
+        <div class="about-content">
+            <img src="about.png" alt="About Us" class="about-image">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>
+                    SentiTracker is dedicated to providing innovative solutions in the field of sentiment analysis. 
+                    Our mission is to empower businesses and individuals to understand and respond to customer 
+                    sentiments effectively. We harness the power of artificial intelligence to deliver 
+                    actionable insights that drive success.
+                </p>
+                <p>
+                    Our team of experts is committed to excellence and constantly strives to improve our services. 
+                    We believe in leveraging technology to bridge the gap between businesses and their customers. 
+                    Join us in our journey to revolutionize the way we understand sentiments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="content-section contact-section">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out to us for any inquiries:</p>
+        <p>Email: info@yourbrand.com</p>
+        <p>Phone: +123 456 7890</p>
+    </section>
+
+    <script>
+        // Smooth scroll to section
+        const links = document.querySelectorAll('.navbar-menu a');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Check if 'Home' is clicked, scroll to top
+                if (targetId === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    const targetSection = document.querySelector(targetId);
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+
+                    window.scrollTo({
+                        top: targetSection.offsetTop - navbarHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navigate to Login page on 'Get Started' button click
+        document.getElementById('get-started').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'login.html'; // Navigate to login page
+        });
+    </script>
 </body>
 </html>
